@@ -2,7 +2,7 @@ package com.company.Models;
 
 //PARENT CLASS
 public class Product {
-    private static int productID;
+    private int productID;
     private String nameOfProduct;
     private String category;
     private String dateOfProduction;
@@ -11,9 +11,14 @@ public class Product {
     private float pricePerOne;
     private String description;
 
+    public static int counter = 0;
 
 
-    public Product(){Product.productID +=1;}
+
+    public Product(){
+        Product.counter++;
+        productID = counter;
+    }
 
     //геттери/сеттери
     public int getProductID(){return productID;}
@@ -85,7 +90,4 @@ public class Product {
                 getDescription() + ".";
     }
 
-    public void editInfo(){
-
-    }
 }

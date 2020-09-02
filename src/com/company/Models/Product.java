@@ -19,7 +19,7 @@ public class Product {
         Product.counter++;
         productID = counter;
     }
-
+//comment
     //геттери/сеттери
     public int getProductID(){return productID;}
     public void setNameOfProduct(String nameOfProduct){

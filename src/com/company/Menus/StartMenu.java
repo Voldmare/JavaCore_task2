@@ -44,7 +44,7 @@ public class StartMenu extends Menu {
             case 3:
                 Warehouse currentWarehouse = warehouseManager.chooseWarehouse();
                 System.out.println("Введіть ID товару.");
-                currentWarehouse.getProductInfoByID(scanner.nextInt());
+                currentWarehouse.editProductInfoByID(scanner.nextInt());
                 break;
         }
         //scanner.nextInt();

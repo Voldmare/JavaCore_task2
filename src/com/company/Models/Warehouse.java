@@ -51,44 +51,48 @@ public class Warehouse {
 
     //
     public void editProductInfoByID(int id){
-        System.out.println(getProductInfoByID(id));
-        Product product = getProductsList().get(id-1);  //ІД на 1 більший за позицію в списку
-        System.out.println("Ви хочете змінити дані товару " + id + ":");
-        System.out.println(product.getInfo());
-        String str;
+        int index = checkID(id);    //перевірка наявності товару із заданим ІД
+        if(index != -1) {
+            Product product = productsInWarehouse.get(index);
+            System.out.println("Ви хочете змінити дані товару " + id + ":");
+            System.out.println(getProductInfoByID(id));
+            String str;
 
-        System.out.println("Введіть нову назву товару (Space - пропустити):");
-        if ((str = scanner.nextLine()).compareTo(" ") != 0){
-            product.setNameOfProduct(str);
-        }
+            System.out.println("Введіть нову назву товару (Space - пропустити):");
+            if ((str = scanner.nextLine()).compareTo(" ") != 0) {
+                product.setNameOfProduct(str);
+            }
 
-        System.out.println("Введіть нову категорію товару (Space - пропустити): ");
-        if ((str = scanner.nextLine()).compareTo(" ") != 0){
-            product.setCategory(str);
-        }
+            System.out.println("Введіть нову категорію товару (Space - пропустити): ");
+            if ((str = scanner.nextLine()).compareTo(" ") != 0) {
+                product.setCategory(str);
+            }
 
-        System.out.println("Введіть нову дату виготовлення товару в форматі дд:мм:рррр (Space - пропустити): ");
-        if ((str = scanner.nextLine()).compareTo(" ") != 0){
-            product.setDateOfProduction(str);
-        }
+            System.out.println("Введіть нову дату виготовлення товару в форматі дд:мм:рррр (Space - пропустити): ");
+            if ((str = scanner.nextLine()).compareTo(" ") != 0) {
+                product.setDateOfProduction(str);
+            }
 
-        System.out.println("Введіть новий термін придатності товару (Space - пропустити): ");
-        if ((str = scanner.nextLine()).compareTo(" ") != 0){
-            product.setExpireTime(str);
-        }
+            System.out.println("Введіть новий термін придатності товару (Space - пропустити): ");
+            if ((str = scanner.nextLine()).compareTo(" ") != 0) {
+                product.setExpireTime(str);
+            }
 
-        System.out.println("Введіть нову кількість одиниць товару (Space - пропустити): ");
-        if ((str = scanner.nextLine()).compareTo(" ") != 0){
-            product.setAmountOfProduct(Integer.parseInt(str));
-        }
+            System.out.println("Введіть нову кількість одиниць товару (Space - пропустити): ");
+            if ((str = scanner.nextLine()).compareTo(" ") != 0) {
+                product.setAmountOfProduct(Integer.parseInt(str));
+            }
 
-        System.out.println("Введіть нову ціну за одиницю товару (Space - пропустити): ");
-        if ((str = scanner.nextLine()).compareTo(" ") != 0){
-            product.setPricePerOne(Float.parseFloat(str));
-        }
-        System.out.println("Введіть новий опис товару (Space - пропустити): ");
-        if ((str = scanner.nextLine()).compareTo(" ") != 0){
-            product.setDescription(str);
+            System.out.println("Введіть нову ціну за одиницю товару (Space - пропустити): ");
+            if ((str = scanner.nextLine()).compareTo(" ") != 0) {
+                product.setPricePerOne(Float.parseFloat(str));
+            }
+            System.out.println("Введіть новий опис товару (Space - пропустити): ");
+            if ((str = scanner.nextLine()).compareTo(" ") != 0) {
+                product.setDescription(str);
+            }
+        } else {
+            System.out.println("Товару з таким ІД не існує.");
         }
     }
 
@@ -99,7 +103,7 @@ public class Warehouse {
 
     //отримати інформацію про товар за ID
     public String getProductInfoByID(int id){
-        String result = "";
+        String result;
         int index = checkID(id);
         if(index != -1){
             result = productsInWarehouse.get(index).getInfo();

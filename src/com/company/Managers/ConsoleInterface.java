@@ -7,15 +7,10 @@ import java.util.Scanner;
 // клас для консольної взаємодії
 public class ConsoleInterface {
 
-    StartMenu startMenu = StartMenu.getInstance();
-    WarehouseManager warehouseManager = WarehouseManager.getInstance();
-
-    Scanner scanner = new Scanner(System.in);
+    StartMenu startMenu = StartMenu.getInstance();      //створюємо стартове меню
 
     public void start(){
-        startMenu.displayMenu();
-
-
+        startMenu.displayMenu();    //виводимо меню в консоль
     }
 
 

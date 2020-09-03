@@ -1,7 +1,5 @@
 package com.company.Models;
 
-import com.company.Models.Product;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -53,6 +51,7 @@ public class Warehouse {
 
     //
     public void editProductInfoByID(int id){
+        System.out.println(getProductInfoByID(id));
         Product product = getProductsList().get(id-1);  //ІД на 1 більший за позицію в списку
         System.out.println("Ви хочете змінити дані товару " + id + ":");
         System.out.println(product.getInfo());
@@ -100,7 +99,44 @@ public class Warehouse {
 
     //отримати інформацію про товар за ID
     public String getProductInfoByID(int id){
-        return getProductsList().get(id-1).getInfo();   //ІД на 1 більший за позицію в списку
+        String result = "";
+        int index = checkID(id);
+        if(index != -1){
+            result = productsInWarehouse.get(index).getInfo();
+        } else {
+            result = "There are no products with such ID!";
+        }
+        return result;
     }
+
+    public void deleteProductByID(int id){
+        int index = checkID(id);
+        if(index != -1){
+            if(confirmDelete(index)){
+                productsInWarehouse.remove(index);
+                System.out.println("Товар був успішно видалений!");
+            } else{
+                System.out.println("Видалення товару скасовано успішно!");
+            }
+        }
+    }
+
+    private boolean confirmDelete(int index){
+        System.out.println("Ви дійсно хочете видалити товар:" + productsInWarehouse.get(index).getInfo() + "?");
+        System.out.println("1: підтвердити видалення\n2: скасувати видалення");
+        return scanner.nextInt() == 1;
+    }
+
+    private int checkID(int id){
+        int result = -1;
+        for(Product product : productsInWarehouse){
+            if(product.getProductID() == id){
+                result = productsInWarehouse.indexOf(product);
+            }
+        }
+        return result;
+    }
+
+
 
 }

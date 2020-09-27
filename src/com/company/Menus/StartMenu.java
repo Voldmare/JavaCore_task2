@@ -31,7 +31,7 @@ public class StartMenu extends Menu {
     @Override
     public void displayMenu() {
         super.displayMenu();    //виводимо пункти меню батьківським методом
-        instance.chooseAction(new Scanner(System.in).nextInt());    //запускаємо перевизначений метод, очікуємо ввід
+        getUserInput();
     }
 
     //перевизначений метод обробки пунктів меню

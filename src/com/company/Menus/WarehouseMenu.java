@@ -28,7 +28,7 @@ public class WarehouseMenu extends Menu {
     public void displayMenu() {
         currentWarehouse = warehouseManager.chooseWarehouse();
         super.displayMenu();
-        instance.chooseAction(scanner.nextInt());
+        getUserInput();
         StartMenu.getInstance().displayMenu();
     }
 

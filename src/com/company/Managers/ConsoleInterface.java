@@ -9,9 +9,10 @@ public class ConsoleInterface {
 
     StartMenu startMenu = StartMenu.getInstance();      //створюємо стартове меню
 
+    /*
+        starts interface for acting with User
+     */
     public void start(){
         startMenu.displayMenu();    //виводимо меню в консоль
     }
-
-
 }

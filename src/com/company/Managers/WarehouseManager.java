@@ -3,22 +3,23 @@ package com.company.Managers;
 import com.company.Models.Warehouse;
 
 import java.util.Scanner;
-
+/*
+    Represents manager for list of warehouses in application
+ */
 public class WarehouseManager {
     private static WarehouseManager instance;
 
     private int warehouseAmount = 3;    //дефолтна к-сть складів
     private Warehouse[] warehouses = new Warehouse[warehouseAmount];
 
-    //Setter
-    public void setWarehouseAmount(int warehouseAmount) {
-        this.warehouseAmount = warehouseAmount;
-    }
     //Getters
     public Warehouse[] getWarehouses() {
         return warehouses;
     }
     //Setters
+    public void setWarehouseAmount(int warehouseAmount) {
+        this.warehouseAmount = warehouseAmount;
+    }
     public void setWarehouses(Warehouse[] warehouses) {
         this.warehouses = warehouses;
     }
@@ -37,6 +38,10 @@ public class WarehouseManager {
         return instance;
     }
     // Methods
+    /*
+        Returns a Warehouse object (based on Input from User) that can then be used for managing Products stored in it.
+        @return Warehouse   object Warehouse
+     */
     public Warehouse chooseWarehouse(){
         System.out.println("Виберіть склад: ");
         for(Warehouse warehouse : warehouses){
